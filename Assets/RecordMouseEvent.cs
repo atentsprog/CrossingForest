@@ -6,24 +6,24 @@ public class RecordMouseEvent : MonoBehaviour
 {
     private void OnMouseEnter()
     {
-        print(transform.GetPath() + "OnMouseEnter 마우스 위에있음");
+        print(transform.GetPath() + " OnMouseEnter 마우스 위에있음");
     }
     private void OnMouseOver()
     {
-        print(transform.GetPath() + "OnMouseOver 마우스 위에 있음");
+        print(transform.GetPath() + " OnMouseOver 마우스 위에 있음");
     }
     private void OnMouseDown()
     {
-        print(transform.GetPath() + "OnMouseDown 마우스 다운");
+        print(transform.GetPath() + " OnMouseDown 마우스 다운");
     }
     private void OnMouseUp()
     {
-        print(transform.GetPath() + "OnMouseUp 마우스 업");
+        print(transform.GetPath() + " OnMouseUp 마우스 업");
     }
 
     private void OnMouseExit()
     {
-        print(transform.GetPath() + "OnMouseExit 마우스 벗어남");
+        print(transform.GetPath() + " OnMouseExit 마우스 벗어남");
     }
 
     public LayerMask checkLayerMask;
@@ -32,7 +32,7 @@ public class RecordMouseEvent : MonoBehaviour
     public int layerTest3;
     private void OnMouseDrag()
     {
-        print(transform.GetPath() + "OnMouseDrag 마우스 드래그중");
+        print(transform.GetPath() + " OnMouseDrag 마우스 드래그중");
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
