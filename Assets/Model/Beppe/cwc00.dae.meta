@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 7b6e3c92db80ccb42b144f43b108fc66
+guid: 7b9d33bb6f02e6f409250847c6a61270
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
   externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: b0
-    second: {fileID: 2100000, guid: 36c8b0afd350bf44b99f6679184e99ae, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: cloth
-    second: {fileID: 2100000, guid: 458a75cfc76db86458435dd50e162f9e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: e
-    second: {fileID: 2100000, guid: b9013b6bfcf29b44c8da540d0748842b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -35,7 +20,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Avatar creation failed:\n\tTransform 'cwc00' not found in HumanDescription.\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -156,6 +141,22 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
+    - boneName: Larm1
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rarm1
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     - boneName: Rfoot3
       humanName: RightFoot
       limit:
@@ -172,14 +173,6 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Rarm1
-      humanName: RightUpperArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
     - boneName: Rarm2
       humanName: RightLowerArm
       limit:
@@ -190,14 +183,6 @@ ModelImporter:
         modified: 0
     - boneName: Rhand
       humanName: RightHand
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Larm1
-      humanName: LeftUpperArm
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -221,104 +206,99 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: dog00(Clone)
+    - name: cwc00(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: _000_dog00_mdl
-      parentName: dog00(Clone)
+    - name: _000_cwc_mdl
+      parentName: cwc00(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: _001_dog00_mdl
-      parentName: dog00(Clone)
+    - name: _001_cwc_mdl
+      parentName: cwc00(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: _002_dog00_mdl
-      parentName: dog00(Clone)
+    - name: _002_cwc_mdl
+      parentName: cwc00(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: _003_dog00_mdl
-      parentName: dog00(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: dog00
-      parentName: dog00(Clone)
+    - name: cwc00
+      parentName: cwc00(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: root
-      parentName: dog00
+      parentName: cwc00
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: base
       parentName: root
-      position: {x: -0, y: 0.36437002, z: 0}
+      position: {x: -0, y: 0.38520002, z: 0}
       rotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
     - name: chest
       parentName: base
-      position: {x: -0.17827001, y: 0, z: 0}
+      position: {x: -0.16048999, y: 0, z: -0.0010299999}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: head
       parentName: chest
-      position: {x: -0.19593, y: 0, z: 0}
+      position: {x: -0.39861, y: 0, z: -0.00256}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: feel
       parentName: head
-      position: {x: -0.2939, y: 0, z: 0.06875}
+      position: {x: -0.50683, y: 0, z: -0.0032600001}
       rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
     - name: Lear
       parentName: head
-      position: {x: -0.50956, y: -0.25063002, z: -0.02175}
-      rotation: {x: -0.20673798, y: -0.6762096, z: 0.6762096, w: 0.20673798}
-      scale: {x: 1.0000004, y: 1, z: 1.0000004}
+      position: {x: -0.65828, y: -0.22159001, z: 0.00433}
+      rotation: {x: 0, y: 0, z: 0.043619003, w: 0.99904823}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1}
     - name: mouth
       parentName: head
-      position: {x: -0.15675001, y: 0, z: 0.13062}
+      position: {x: -0.32465, y: 0, z: 0.22500001}
       rotation: {x: -0, y: 0.7071068, z: 0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
     - name: Rear
       parentName: head
-      position: {x: -0.50956, y: 0.25064, z: -0.02175}
-      rotation: {x: -0.20673798, y: 0.6762096, z: 0.6762096, w: -0.20673798}
-      scale: {x: 1.0000004, y: 1, z: 1.0000004}
+      position: {x: -0.65828, y: 0.22159001, z: 0.00433}
+      rotation: {x: 0, y: 0, z: -0.043619003, w: 0.99904823}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1}
     - name: Larm1
       parentName: chest
-      position: {x: -0.14073999, y: -0.13062, z: -0.0142}
+      position: {x: -0.20833, y: -0.17035, z: -0.00134}
       rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
     - name: Larm2
       parentName: Larm1
-      position: {x: -0.14781, y: 0, z: 0}
+      position: {x: -0.19851999, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Lhand
       parentName: Larm2
-      position: {x: -0.16499999, y: 0, z: 0}
+      position: {x: -0.14868, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Rarm1
       parentName: chest
-      position: {x: -0.14073999, y: 0.13062, z: -0.0142}
-      rotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
+      position: {x: -0.20833, y: 0.17035, z: -0.00134}
+      rotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
     - name: Rarm2
       parentName: Rarm1
-      position: {x: -0.14781, y: 0, z: 0}
+      position: {x: -0.19851999, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Rhand
       parentName: Rarm2
-      position: {x: -0.16499999, y: 0, z: 0}
+      position: {x: -0.14868, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: waist
@@ -328,42 +308,42 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: Lfoot1
       parentName: waist
-      position: {x: -0.17187, y: 0.082499996, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
+      position: {x: -0.11776, y: 0.0749, z: -0.010319999}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Lfoot2
       parentName: Lfoot1
-      position: {x: -0.09625, y: 0, z: 0}
+      position: {x: -0.117690004, y: 0, z: 0.00075}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Lfoot3
       parentName: Lfoot2
-      position: {x: -0.061869998, y: 0, z: 0}
+      position: {x: -0.12304, y: 0, z: 0.00078999996}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Rfoot1
       parentName: waist
-      position: {x: -0.17187, y: -0.082499996, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
+      position: {x: -0.11776, y: -0.0749, z: -0.01036}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Rfoot2
       parentName: Rfoot1
-      position: {x: -0.09625, y: 0, z: 0}
+      position: {x: -0.117690004, y: 0, z: 0.00075}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Rfoot3
       parentName: Rfoot2
-      position: {x: -0.061869998, y: 0, z: 0}
+      position: {x: -0.12304, y: 0, z: 0.00078999996}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: tail1
       parentName: waist
-      position: {x: -0.05436, y: 0, z: -0.13062}
+      position: {x: -0.01168, y: 0, z: -0.15295}
       rotation: {x: 0.7071068, y: 4.3297806e-17, z: 0.7071068, w: -4.3297806e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: tail2
       parentName: tail1
-      position: {x: -0.16505, y: 0, z: 0}
+      position: {x: -0.13281, y: 0, z: 0.028029999}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
