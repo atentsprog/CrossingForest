@@ -38,6 +38,7 @@ static public class MyExtension
         // 부모가 있으면 부모 경로와 경로 구분자를 넣는다.
         StringBuilder sb = new StringBuilder();
         GetParentPath(t, sb);
+        sb.Append(t.name);
         return sb.ToString();
 
         void GetParentPath(Transform tr, StringBuilder sb)
@@ -49,8 +50,6 @@ static public class MyExtension
                 sb.Append(tr.parent.name);
                 sb.Append(System.IO.Path.DirectorySeparatorChar);
             }
-
-            sb.Append(tr.name);
         }
     }
 }
