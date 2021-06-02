@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour
+public class Tree : MonoBehaviour, IClick
 {
-    // 3D오브젝트 클릭 이벤트
-    private void OnMouseDown()
+    public void OnClickMessage()
     {
-        print(transform.GetPath() + " OnMouseDown 마우스 다운");
+        print(transform.GetPath() + " OnClickMessage 실행");
         // 플레이어가 나에게 들어와 있는 상태인가?
         // 2가지 방식으로 확인가능.
         if(isInPlayer)
@@ -48,4 +47,5 @@ public class Tree : MonoBehaviour
             isInPlayer = false;
         }
     }
+
 }
