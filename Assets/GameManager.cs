@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
                 IClick iClick = hitData.transform.GetComponent<IClick>();
                 if (iClick != null)
                     iClick.OnClickMessage();
+                else
+                {
+                    //플레이어 위치 이동
+                    Player.instance.agent.destination = hitData.point;
+                }
             }
             else
             {
