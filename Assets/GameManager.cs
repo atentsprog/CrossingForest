@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+internal interface IClick
+{
+    void OnClickMessage();
+}
 public class GameManager : MonoBehaviour
 {
     public LayerMask layer;
@@ -39,9 +43,4 @@ public class GameManager : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(ray.origin, ray.direction * rayLength);
     }
-}
-
-internal interface IClick
-{
-    void OnClickMessage();
 }
