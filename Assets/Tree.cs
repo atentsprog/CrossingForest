@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +12,11 @@ public class Tree : MonoBehaviour
         // 2가지 방식으로 확인가능.
         if(isInPlayer)
         {
-            DropFruit();
+            Animator[] animators = GetComponentsInChildren<Animator>();
+            for (int i = 0; i < animators.Length; i++)
+            {
+                animators[i].Play("DropFruit", 0, 0);
+            }
         }
     }
 
@@ -36,23 +39,6 @@ public class Tree : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInPlayer = false;
-        }
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            DropFruit();
-        }
-    }
-
-    private void DropFruit()
-    {
-        Animator[] animators = GetComponentsInChildren<Animator>();
-        for (int i = 0; i < animators.Length; i++)
-        {
-            animators[i].Play("DropFruit", 0, 0);
         }
     }
 }
