@@ -139,6 +139,14 @@ All File In Directory : 디렉토리에 있는 모든 메테리얼을 대상으�
     List<ShaderPropertyInfo> properties = null;
     private void CopyShaderConfig()
     {
+        //선택된 메테리얼에서 값을 읽자.
+        List<Material> toMaterials = GetSelectedMaterials();
+        Debug.Assert(toMaterials.Count == 1, "선택한 메테리얼이 1개가 아닙니다");
+
+        Material toMat = toMaterials[0];
+
+        toShader = toMat.shader;
+
         int count = ShaderUtil.GetPropertyCount(toShader);
         properties = new List<ShaderPropertyInfo>(count);
         for (var i = 0; i < count; ++i)
@@ -148,11 +156,6 @@ All File In Directory : 디렉토리에 있는 모든 메테리얼을 대상으�
             properties.Add(new ShaderPropertyInfo(name, type));
         }
 
-        //선택된 메테리얼에서 값을 읽자.
-        List<Material> toMaterials = GetSelectedMaterials();
-        Debug.Assert(toMaterials.Count == 1, "선택한 메테리얼이 1개가 아닙니다");
-
-        Material toMat = toMaterials[0];
         foreach (var item in properties)
         {
             switch (item.type)
