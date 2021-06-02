@@ -17,6 +17,13 @@ public class Tree : MonoBehaviour
             {
                 animators[i].Play("DropFruit", 0, 0);
             }
+
+            //레가시 애니메이션을 사용한 예제
+            //Animation[] animations = GetComponentsInChildren<Animation>();
+            //for (int i = 0; i < animations.Length; i++)
+            //{
+            //    animations[i].Play("DropFruit");
+            //}
         }
     }
 
