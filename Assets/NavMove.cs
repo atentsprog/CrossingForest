@@ -7,7 +7,6 @@ public class NavMove : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public int myInt = -1;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
