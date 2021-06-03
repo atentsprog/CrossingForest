@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class ChangeShader : ScriptableWizard
 {
-    [MenuItem("Assets/Change Shader")]
+    [MenuItem("Assets/Change Shader", false, 1)]
     static void Init()
     {
         ChangeShader changeShader = DisplayWizard<ChangeShader>(

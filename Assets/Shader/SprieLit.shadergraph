@@ -369,9 +369,9 @@
     "m_Guid": {
         "m_GuidSerialized": "3a95181e-ae53-436d-91fa-b428efcf1835"
     },
-    "m_Name": "Texture2D",
+    "m_Name": "Texture2DName",
     "m_DefaultReferenceName": "Texture2D_4a7e98523e5e44958d6f907ba0395802",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_MainTex",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
@@ -1056,10 +1056,10 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.0,
-        "g": 0.0,
-        "b": 0.0,
-        "a": 0.0
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
     },
     "m_ColorMode": 0
 }
