@@ -220,6 +220,8 @@ All File In Directory : 디렉토리에 있는 모든 메테리얼을 대상으�
         List<Material> desMaterials = new List<Material>();
         foreach (var item in Selection.objects)
         {
+            if (item == null)
+                continue;
             var itemType = item.GetType();
             if (itemType == typeof(Material))
                 desMaterials.Add((Material)item);
