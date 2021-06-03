@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class MyEditorMenu : ScriptableWizard
 {
+    private void OnWizardCreate()
+    {
+        
+    }
     public Type type;
     public enum Type
     {
