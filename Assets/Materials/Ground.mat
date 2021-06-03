@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ground
-  m_Shader: {fileID: -6465566751694194690, guid: c2738d503fe881a49b40e14a61ba39a6, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 9b1d1c8ce092ba8438f51f38ee10d224, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -34,6 +34,10 @@ Material:
     m_TexEnvs:
     - Texture2D_4a7e98523e5e44958d6f907ba0395802:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_687ad13f962146358bb3d3fec22e65a9:
+        m_Texture: {fileID: 2800000, guid: 37497f1fc5db3104ea3a6cc826767b05, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_9247d58709f5471fb5de60c2d598462e:
@@ -100,6 +104,10 @@ Material:
         m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_af08066d649f4eec90686b6bb348055a_Out_0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -113,7 +121,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_26d0bc2c940b405fbfc87f8c6f8602c4: 10
+    - Vector1_26d0bc2c940b405fbfc87f8c6f8602c4: 10.18
     - Vector1_83a9ff2c68ae42128c4c293e91c63c12: 0
     - Vector1_c516c70130c8416291c801aa529bd597: 0
     - Vector1_c516c70130c8416291c801aa529bd597_1: 0
@@ -157,6 +165,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_1943b9ad95934e24ab48e3f7382193f2: {r: 1, g: 1, b: 1, a: 1}
+    - Color_4d4b2a94b12a45f2a9dc65947957a5f1: {r: 0.19446424, g: 0.4339623, b: 0.19798626, a: 0}
     - Color_edc75cb2ad6a461eb6fa4056b7f1e748: {r: 1, g: 1, b: 1, a: 1}
     - Vector2_443e8fbe6782468bb3e54e96c0a3107f: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_ea02474a6ee2484aa0af8eaab0fc3798: {r: 2.54, g: -0.17, b: 2.04, a: 0.57}

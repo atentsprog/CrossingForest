@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: m_treeA
-  m_Shader: {fileID: -6465566751694194690, guid: 21825edb8d047d040996949b909252b5, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: c2738d503fe881a49b40e14a61ba39a6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -76,6 +76,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_26d0bc2c940b405fbfc87f8c6f8602c4: 1
+    - Vector1_c516c70130c8416291c801aa529bd597: 0
+    - Vector1_c516c70130c8416291c801aa529bd597_1: 0
+    - Vector1_e6ad4f7e51e4479e976345a66cd132ef: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
