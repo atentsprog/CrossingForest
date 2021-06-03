@@ -25,7 +25,7 @@ public class Tree : MonoBehaviour, IClick
             //}
         }
     }
-
+    Dictionary<string, float> clipLength = new Dictionary<string, float>();
     public bool isInPlayer = false;
     private void OnTriggerEnter(Collider other)
     {
@@ -37,6 +37,14 @@ public class Tree : MonoBehaviour, IClick
             for (int i = 0; i < animators.Length; i++)
             {
                 animators[i].Play("SwingLeaf", 0, 0);
+
+                // 모든 애니메이션의 길이를 저장하자. 보통은 Awake나 Start처럼 처음에 애니메이션의 길이를 수집한다
+                foreach(var item in animators[i].runtimeAnimatorController.animationClips)
+                {
+                    //item.name // 애니메이션의 이름.
+                    //item.length // 애니메이션의 길이
+                    clipLength[item.name] = item.length; 
+                }
             }
         }
     }
