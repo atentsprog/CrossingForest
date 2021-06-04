@@ -184,15 +184,20 @@ public class MyEditorMenu : ScriptableWizard
         string shaderPath = AssetDatabase.GetAssetPath(toShader);
         Debug.Log(shaderPath);
         EditorPrefs.SetString("ShaderPath", shaderPath);
+
+        shaderPath = EditorPrefs.GetString("ShaderPath");
+        Debug.Log(shaderPath);
     }
 
     private void Load()
     {
         // 불러오기.
-        path = EditorPrefs.GetString("Path");
-
         //toShader  마지막에 지정했던 쉐이더로 지정하자.
         string shaderPath = EditorPrefs.GetString("ShaderPath");
+        Debug.Log(shaderPath);
+
+        path = EditorPrefs.GetString("Path");
+
         if (string.IsNullOrEmpty(shaderPath) == false)
         {
             toShader = (Shader)AssetDatabase.LoadAssetAtPath(shaderPath, typeof(Shader));
