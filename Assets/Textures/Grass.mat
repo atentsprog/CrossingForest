@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-118961803141339984
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -7,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: m_treeA
+  m_Name: Grass
   m_Shader: {fileID: -6465566751694194690, guid: 6b9dcd06cb3e8cc48959f13a065bf3b8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -19,12 +32,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_4a7e98523e5e44958d6f907ba0395802:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 83e19c98b71c5694f9571fb72df0c90e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -48,11 +57,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 83e19c98b71c5694f9571fb72df0c90e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 83e19c98b71c5694f9571fb72df0c90e, type: 3}
+        m_Texture: {fileID: 2800000, guid: c73f7fb49bb81034d8bbde0ecd2228ce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -67,8 +76,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_0fb3b6bbdb1d429f816bdacafa077908_Out_0:
-        m_Texture: {fileID: 2800000, guid: b32ef1f0183752e43adabea3c6574713, type: 3}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -85,53 +94,39 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_0fe7072a827c4f82b2d82ec0c4ee2c5a: 0
-    - Vector1_26d0bc2c940b405fbfc87f8c6f8602c4: 1
-    - Vector1_5e0c84a524d44ed18a13d907885ae5ff: 0
     - Vector1_b9906f76e4ce46eda582c66a22a6885a: 1
     - Vector1_c3d426e7beec48e39d0bca5e45b8abeb: 0
-    - Vector1_c516c70130c8416291c801aa529bd597: 0
-    - Vector1_c516c70130c8416291c801aa529bd597_1: 0
-    - Vector1_e6ad4f7e51e4479e976345a66cd132ef: 1
     - Vector1_ef2a3a38eb7b48de9a108b62517c726f: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _GlossMapScale: 1
+    - _EnvironmentReflections: 1
+    - _GlossMapScale: 0
     - _Glossiness: 0
-    - _GlossyReflections: 1
+    - _GlossyReflections: 0
     - _Metallic: 0
-    - _Mode: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.02
+    - _Parallax: 0.005
     - _QueueOffset: 0
-    - _SampleGI: 0
+    - _ReceiveShadows: 1
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _UVSec: 0
+    - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_02dd29dbad684cea8a76be5835444a1c: {r: 1, g: 1, b: 1, a: 0.5647059}
-    - Color_edc75cb2ad6a461eb6fa4056b7f1e748: {r: 1, g: 1, b: 1, a: 1}
+    - Color_02dd29dbad684cea8a76be5835444a1c: {r: 0.4296737, g: 0.6698113, b: 0.004212567, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1520634334893193954
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 4

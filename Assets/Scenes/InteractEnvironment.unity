@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44562626, g: 0.49531746, b: 0.57417923, a: 1}
+  m_IndirectSpecularColor: {r: 0.44562656, g: 0.49531817, b: 0.5741807, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -202,7 +202,7 @@ SpriteRenderer:
   m_Size: {x: 0.74, y: 0.35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &149333626
@@ -287,7 +287,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25640
+  m_Name: pb_Mesh26866
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7578,7 +7578,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25658
+  m_Name: pb_Mesh26884
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7870,7 +7870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &564784446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8332,7 +8332,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25472
+  m_Name: pb_Mesh26702
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22356,7 +22356,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25564
+  m_Name: pb_Mesh26782
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22964,7 +22964,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25586
+  m_Name: pb_Mesh26804
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23294,8 +23294,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618815567}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.513, y: 0.005, z: 0.711}
-  m_LocalScale: {x: 1.4505, y: 1.4505, z: 1.4505}
+  m_LocalPosition: {x: -0.781, y: 0.005, z: 0.875}
+  m_LocalScale: {x: 0.5485076, y: 0.5485076, z: 0.5485076}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9

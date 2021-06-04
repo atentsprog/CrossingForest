@@ -32,6 +32,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Albedo:
+        m_Texture: {fileID: 2800000, guid: c73f7fb49bb81034d8bbde0ecd2228ce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_4a7e98523e5e44958d6f907ba0395802:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -44,8 +48,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_f95a6069378d4ceab13f979b6d067af7:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: c73f7fb49bb81034d8bbde0ecd2228ce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 2800000, guid: 0625d67c452e1a64db2b8b833b804a11, type: 3}
         m_Scale: {x: 11, y: 11}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -84,6 +96,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: 4cbcd2817a04ba340b9a19c928482865, type: 3}
         m_Scale: {x: 11, y: 11}
         m_Offset: {x: 0, y: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: 0625d67c452e1a64db2b8b833b804a11, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTexture11:
+        m_Texture: {fileID: 2800000, guid: c73f7fb49bb81034d8bbde0ecd2228ce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -101,6 +121,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_0fb3b6bbdb1d429f816bdacafa077908_Out_0:
+        m_Texture: {fileID: 2800000, guid: c73f7fb49bb81034d8bbde0ecd2228ce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_4aba07a6d46942ed8cdb7b4e093ef399_Out_0:
         m_Texture: {fileID: 2800000, guid: c73f7fb49bb81034d8bbde0ecd2228ce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -126,13 +150,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_0a5b7a61a0c144d693e8b8a59a555335: 18.87
+    - Vector1_0fe7072a827c4f82b2d82ec0c4ee2c5a: -0.27
     - Vector1_26d0bc2c940b405fbfc87f8c6f8602c4: 10.18
     - Vector1_3a7f6653b8744dca93711b44b8904812: -0.04
     - Vector1_6f7e5626bc0d437f98300aa4a7dc7ca7: 2.84
     - Vector1_83a9ff2c68ae42128c4c293e91c63c12: 0
+    - Vector1_b9906f76e4ce46eda582c66a22a6885a: 3
+    - Vector1_c3d426e7beec48e39d0bca5e45b8abeb: 2.07
     - Vector1_c516c70130c8416291c801aa529bd597: 0
     - Vector1_c516c70130c8416291c801aa529bd597_1: 0
     - Vector1_e6ad4f7e51e4479e976345a66cd132ef: 10
+    - Vector1_ef2a3a38eb7b48de9a108b62517c726f: 3
     - Vector1_fbd66386cdc84037849c1907583e6be0: 1.66
     - _Alpha: 1.63
     - _AlphaClip: 0
@@ -173,6 +201,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_02dd29dbad684cea8a76be5835444a1c: {r: 1, g: 1, b: 1, a: 1}
     - Color_1943b9ad95934e24ab48e3f7382193f2: {r: 0.08994246, g: 0.4245283, b: 0, a: 1}
     - Color_4d4b2a94b12a45f2a9dc65947957a5f1: {r: 0.19446424, g: 0.4339623, b: 0.19798626, a: 0}
     - Color_58edf3b302754aa18aa1e50762c40e2d: {r: 1, g: 1, b: 1, a: 1}
