@@ -241,8 +241,11 @@ All File In Directory : 디렉토리에 있는 모든 메테리얼을 대상으�
             if (EditorUtility.DisplayDialog("경고", "쉐이더를 지정하지 않았습니다. 계속 진행하겠습니까?", "확인", "취소") == false)
                 return;
         }
+
+        // Linq를 사용해서 중복 제거.
         var materials = desMaterials.Distinct() // 중복제거
             .Where(x => x.shader != toShader);  // 대상 필터링
+
 
         foreach (var mat in materials)
         {

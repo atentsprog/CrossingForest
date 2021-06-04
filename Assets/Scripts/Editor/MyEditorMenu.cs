@@ -6,10 +6,18 @@ using UnityEngine;
 
 public class MyEditorMenu : ScriptableWizard
 {
+    // Path 안에 있는 모든 메테리얼의 쉐이더를 대상으로 적용하자.
+    // Path 내용은 메뉴창을 닫았다 열어도 복구 시키자.
+    // ToShader에 있는 세이더를 닫아다 다시 열어도 복구 시키자.
+    public string path = "Assets";
     private void OnWizardCreate()
     {
-        
+        // path를 저장하자, toShader의 경로도 저장하자.
+        // 저장.
+        Save();
     }
+
+
     public Type type;
     public enum Type
     {
@@ -23,6 +31,7 @@ public class MyEditorMenu : ScriptableWizard
         if (GUILayout.Button("쉐이더 교체"))
         {
             ChangeSelctedShader();
+            Save();
         }
 
         if (GUILayout.Button("설정 복사"))
@@ -33,6 +42,7 @@ public class MyEditorMenu : ScriptableWizard
         if (GUILayout.Button("설정 붙여넣기"))
         {
             PasteShaderConfig();
+            Save();
         }
 
         return true;
@@ -152,15 +162,8 @@ public class MyEditorMenu : ScriptableWizard
     {
         // 내가 선택한 오브젝트의 쉐이더를 내가 지정한 쉐이더로 교체하자.
         //Selection.objects // 내가 선택한 모든 오브젝트 들어가 있다.
-        foreach (var item in Selection.objects)
-        {
-            GameObject go = (GameObject)item;
-            // 렌더러접근, -> 메테리얼 접근 -> 쉐이더 교체
-            var renderer = go.GetComponent<Renderer>();
-
-            if(renderer)
-                renderer.sharedMaterial.shader = toShader;
-        }
+        List<Material> desMaterials = GetSelectedMaterials();
+        desMaterials.ForEach(x => x.shader = toShader);
     }
 
     public Shader toShader;
@@ -169,6 +172,30 @@ public class MyEditorMenu : ScriptableWizard
     static void MyMenu()
     {
         Debug.Log("나의 메뉴 실행됨, UI를 열자");
-        DisplayWizard<MyEditorMenu>("나의 메뉴", "닫기");
+        MyEditorMenu myEditorMenu = DisplayWizard<MyEditorMenu>("나의 메뉴", "닫기");
+        myEditorMenu.Load();
+    }
+
+    private void Save()
+    {
+        EditorPrefs.SetString("Path", path);
+
+        //toShader 의 경로를 확인하자.
+        string shaderPath = AssetDatabase.GetAssetPath(toShader);
+        Debug.Log(shaderPath);
+        EditorPrefs.SetString("ShaderPath", shaderPath);
+    }
+
+    private void Load()
+    {
+        // 불러오기.
+        path = EditorPrefs.GetString("Path");
+
+        //toShader  마지막에 지정했던 쉐이더로 지정하자.
+        string shaderPath = EditorPrefs.GetString("ShaderPath");
+        if (string.IsNullOrEmpty(shaderPath) == false)
+        {
+            toShader = (Shader)AssetDatabase.LoadAssetAtPath(shaderPath, typeof(Shader));
+        }
     }
 }
