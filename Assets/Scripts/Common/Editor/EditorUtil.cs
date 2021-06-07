@@ -98,7 +98,7 @@ public class EditorUtil
             Transform tParent = t.parent;
             while (true)
             {
-                if (tParent.parent == null || tParent == parent || tParent.parent == parent)
+                if (tParent.parent == null || tParent == parent)
                     break;
                 componentPath = string.Format("{0}/{1}", tParent.name, componentPath);
                 tParent = tParent.parent;

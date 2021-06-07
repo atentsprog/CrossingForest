@@ -10,6 +10,37 @@ using UnityEngine;
 static public class MyExtension
 {
     /// <summary>
+    /// 스트링에서 태그(<b>, <color>,...)를 제외한 길이를 반환한다
+    /// <b>test</b> // 실제 길이 4, 글자길이 11(태그길이7), 
+    /// </summary>
+    /// <param name="richText">[태그가 포함된] 원본 문자열</param>
+    /// <returns>태그가 제외된 문자열의 길이</returns>
+    public static int VisibleTextLength(this string richText)
+    {
+        int len = 0;
+        bool inTag = false;
+
+        foreach (var ch in richText)
+        {
+            if (ch == '<')
+            {
+                inTag = true;
+                continue;
+            }
+            else if (ch == '>')
+            {
+                inTag = false;
+            }
+            else if (!inTag)
+            {
+                len++;
+            }
+        }
+
+        return len;
+    }
+
+    /// <summary>
     /// 특정 방향에서 y축을 기준으로 회전한 방향 벡터 반환
     /// </summary>
     /// <param name="baseDirection">기준이 되는 벡터 ex)transform.forward</param>
