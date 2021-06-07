@@ -42,10 +42,10 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public float rayLength = 1000f;
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(ray.origin, ray.direction * rayLength);
-    }
+    //public float rayLength = 1000f;
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawRay(ray.origin, ray.direction * rayLength);
+    //}
 }
