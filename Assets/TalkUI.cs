@@ -30,7 +30,7 @@ public class TalkUI : MonoBehaviour
     void Awake()
     {
         //  컴포넌트 할당및 원래값 저장
-        text = transform.Find("TalkBG/Text").GetComponent<Text>();
+        text = transform.Find("BG/Text").GetComponent<Text>();
         canvasGroup = GetComponent<CanvasGroup>();
         originalLocalPosition = transform.localPosition;
         originalAlpha = canvasGroup.alpha;

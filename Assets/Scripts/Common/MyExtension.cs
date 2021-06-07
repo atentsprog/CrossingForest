@@ -9,6 +9,31 @@ using UnityEngine;
 /// </summary>
 static public class MyExtension
 {
+    public static T AddOrGetComponent<T>(this Transform tr) where T : Component
+    {
+        T t = tr.GetComponent<T>();
+        if (t == null)
+            t = tr.gameObject.AddComponent<T>();
+
+        return t;
+    }
+
+    public static T AddOrGetComponent<T>(this GameObject tr) where T : Component
+    {
+        T t = tr.GetComponent<T>();
+        if (t == null)
+            t = tr.AddComponent<T>();
+
+        return t;
+    }
+    static public string ShortName(this System.Type type)
+    {
+        string[] tempName = type.ToString().Split('.');
+        string result = tempName[tempName.Length - 1];
+
+        return result;
+    }
+
     /// <summary>
     /// 스트링에서 태그(<b>, <color>,...)를 제외한 길이를 반환한다
     /// <b>test</b> // 실제 길이 4, 글자길이 11(태그길이7), 
