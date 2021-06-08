@@ -1,4 +1,6 @@
 ﻿using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +15,8 @@ public class DialogUI : MonoBehaviour
     // 스케일 했음
     // 이름표 먼저 나타남, 대화창 뒤에 스케일 애니메이션으로 나타남.
 
-    public Transform bgTr;
+    public Transform bgTr; 
+    Image semo;
     //go -> GameObject
     //tr -> Transform
 
@@ -23,12 +26,13 @@ public class DialogUI : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        gameObject.SetActive(false);
     }
 
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        semo = transform.Find("BG/Semo").GetComponent<Image>();
+        gameObject.SetActive(false);
     }
     public float duration = 1;
 
@@ -56,16 +60,32 @@ public class DialogUI : MonoBehaviour
     //}
 
     public float charDuration = 0.2f;
+    public float typingDelay = 0.3f;
+
+    TweenerCore<string, string, StringOptions> typingHandle;
     internal void Show(string talkSring)
     {
+        semo.gameObject.SetActive(false);
         gameObject.SetActive(true);
         //text.text = talkSring;
         text.text = "";
-        text.DOText(talkSring, talkSring.Length * charDuration);
+
+        if (typingHandle != null)
+            typingHandle.Kill();
+
+        typingHandle = text.DOText(talkSring, talkSring.VisibleTextLength() * charDuration)
+            .SetDelay(typingDelay)
+            .OnComplete(() => { semo.gameObject.SetActive(true); });
+        //.OnComplete(ShowSemo);
 
         bgTr.localScale = Vector3.one * 0.1f;
         bgTr.DOScale(new Vector3(1, 1, 1), duration);// Vector3.one
+        //void ShowSemo()
+        //{
+        //    semo.gameObject.SetActive(true);
+        //}
     }
+
     internal void Close()
     {
         gameObject.SetActive(false);
