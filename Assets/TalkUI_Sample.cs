@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TalkUI : MonoBehaviour
+public class TalkUI_Sample : MonoBehaviour
 {
     // UI나타날때 스케일 애니메이션,
     // 알파 애니메이션

@@ -41,6 +41,15 @@ public class GameManager : MonoBehaviour
                 isHit = false;
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            DialogUI.instance.Show(@"너구리야 밥은 먹었니?");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            DialogUI.instance.Close();
+        }
     }
     //public float rayLength = 1000f;
     //private void OnDrawGizmos()
