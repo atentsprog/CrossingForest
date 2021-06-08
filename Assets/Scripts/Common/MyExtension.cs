@@ -104,7 +104,7 @@ static public class MyExtension
                 GetParentPath(tr.parent, sb);
 
                 sb.Append(tr.parent.name);
-                sb.Append(System.IO.Path.DirectorySeparatorChar);
+                sb.Append('/'); // 유니티에서의 경로, (System.IO.Path.DirectorySeparatorChar는 OS의 디렉토리 경로 구분자)
             }
         }
     }

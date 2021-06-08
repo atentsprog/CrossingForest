@@ -44,13 +44,14 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            DialogUI.instance.Show(@"너구리야 밥은 먹었니?");
+            DialogUI.instance.Show(dialogString);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             DialogUI.instance.Close();
         }
     }
+    public string dialogString = "<color=#00ff00>너구리</color>야 밥은 먹었니?";
     //public float rayLength = 1000f;
     //private void OnDrawGizmos()
     //{

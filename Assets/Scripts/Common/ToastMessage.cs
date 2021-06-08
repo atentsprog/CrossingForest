@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ToastMessage : SingletonMonoBehavior<ToastMessage>
 {
+    public override int SortOrder => 1;
+
     [SerializeField]
     Text text;
 
@@ -13,13 +15,23 @@ public class ToastMessage : SingletonMonoBehavior<ToastMessage>
 
     public void ShowToast(string text, int duration = 2)
     {
-        base.Show(true);
+        base.Show(false); // 창이 닫힐때 강제로 UI를 보이게 하면 무한 루프 발생한다.
+
+        if (CacheGameObject.activeInHierarchy == false)
+        {
+            Debug.Log($"{text} 메시지는 표시안함, 토스트 UI를 활성화 시키지 못했음, 게임 끌때 발생함(정상 과정)");
+            return;
+        }
 
         // 기존에 활성화 중인 메시지가 있다면 지금 코루틴이 끝난 다음에 연속해서 보여주자.
-        StartCoroutine(showToastCOR(text, duration));
+        if (handle != null)
+            StopCoroutine(handle);
+        handle = StartCoroutine(showToastCo(text, duration));
     }
 
-    private IEnumerator showToastCOR(string text,
+    Coroutine handle;
+
+    private IEnumerator showToastCo(string text,
         int duration)
     {
         Color orginalColor = this.text.color;
@@ -44,7 +56,7 @@ public class ToastMessage : SingletonMonoBehavior<ToastMessage>
         this.text.enabled = false;
         this.text.color = orginalColor;
 
-        CloseFn();
+        Close();
     }
 
     IEnumerator fadeInAndOut(CanvasGroup canvasGroup, bool fadeIn, float duration)

@@ -8,10 +8,21 @@ public class SingletonBase : MonoBehaviour
 {
     static protected List<SingletonBase> MenuHistory = new List<SingletonBase>();
 
-    public virtual string HierarchyPath { get
+    public virtual int SortOrder => 0;
+
+    public virtual string HierarchyPath 
+    {
+        get
         {
-            return GetType().ShortName();
-        } }
+            string canvasName = "Canvas";
+            if (SortOrder > 0)
+            {
+                canvasName += SortOrder;
+            }
+
+            return $"{canvasName}/" +GetType().ShortName();
+        } 
+    }
 
     virtual public void Show() { }
 
@@ -22,7 +33,9 @@ public class SingletonBase : MonoBehaviour
 
 
 /// <summary>
-/// esc키를 누르면 창이 닫힌다.
+/// esc키를 누르면 창이 닫힌다. Ese키 눌렀을때 창이 닫히지 않는 UI는 SingletonMonoBehavior를 상속받자
+/// Show() : UI 보여주는 함수
+/// Close() : UI 닫는 함수
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public class BaseUI<T> : SingletonMonoBehavior<T>
@@ -83,7 +96,7 @@ where T : SingletonBase
 /// 싱글턴, 동적 로드 가능
 /// OnInit : 1회성 초기화시 사용
 /// Show : 나타나게 할때 호출한다
-/// CloseFn : 사라지게 할때 호출한다
+/// Close : 사라지게 할때 호출한다
 /// OnShow : 나타날때 호출된다
 /// 
 /// IsInitInstance : 인스턴스 초기화 되었는지 확인.
@@ -93,6 +106,9 @@ where T : SingletonBase
 public class SingletonMonoBehavior<T> : SingletonBase
 where T : SingletonBase
 {
+    static bool applicationQuit = false;
+    private void OnApplicationQuit() => applicationQuit = true;
+    
     static protected T m_instance;
     static public T Instance
     {
@@ -101,8 +117,9 @@ where T : SingletonBase
             
             if (m_instance == null)
             {
+                if (applicationQuit)
+                    return null;
                 SetInstance(Util.InstantiateSingleton<T>());
-
                 
                 //m_instance.gameObject.SetActive(false); // 여기서 꺼버리면 Start에서 코루틴호출하는게 꺼진다 -> 강제로 끄면 안된다
             }
@@ -115,12 +132,13 @@ where T : SingletonBase
     {
         string originalPath = _instance.HierarchyPath;
 
-        // 없으면 만들자.
+        // 부모가 없으면 리소스 폴더에서 로드 하자 리소스 폴더에도 없다면 만들자.(CreateHierarchy)
         string rootParentPath = GetRootParentPath(originalPath);
         if (string.IsNullOrEmpty(rootParentPath) == false)
         {
             string parentFullpaht = GetParentFullPath(originalPath);
             Transform existParent = GetExistHierarchy(parentFullpaht);
+
             if (existParent == null)
             {
                 existParent = CreateHierarchy(parentFullpaht);
@@ -138,6 +156,10 @@ where T : SingletonBase
         if(m_instance.completeUiInite == false)
             m_instance.ExecuteOneTimeInit();
 
+
+        RectTransform rectTransform = m_instance.gameObject.GetComponent<RectTransform>();
+        rectTransform.localPosition = Vector3.zero;
+        rectTransform.localScale = Vector3.one;
 
         /// 최초 '/' 앞에 있는 경로
         string GetRootParentPath(string _originalPath)
@@ -176,9 +198,18 @@ where T : SingletonBase
                 return go.transform;
             }
 
-            // 첫번째 아이템은 GameObject.Find로 찾는다.
+            // 첫번째 아이템은 GameObject.Find로 씬에 있는걸 찾는다.
             string rootPath = paths[0];
             GameObject rootGo = GameObject.Find(rootPath);
+
+            // 씬에 없다면 리소스 폴더에 있는걸 생성.
+            if (rootGo == null)
+            {
+                var obj = Resources.Load(rootPath, typeof(GameObject));
+                rootGo = (GameObject)Instantiate(obj);
+                rootGo.name = obj.name;
+            }
+
             if (rootGo == null)
                 rootGo = new GameObject(rootPath);
 
@@ -202,6 +233,9 @@ where T : SingletonBase
             // 루트 오브젝트를 찾는다.
             string[] paths = path.Split('/');
             GameObject rootGo = GameObject.Find(paths[0]);
+
+            if (rootGo == null)
+                return null;
 
             if (paths.Length == 1)
             {
@@ -292,14 +326,18 @@ where T : SingletonBase
 
         if (force)
         {
-            while (CacheGameObject.activeInHierarchy == false)
+            Transform parent = CacheGameObject.transform.parent;
+            do
             {
-                Transform parent = CacheGameObject.transform.parent;
                 if (parent == null)
                     break;
                 parent.gameObject.SetActive(true);
-            }
+                parent = parent.parent;
+            } while (CacheGameObject.activeInHierarchy == false);
         }
+
+        // 다른 UI들보다 먼저 보이도록 하이어라키 가장 아래로 내리자.
+        CacheGameObject.transform.SetAsLastSibling();
 
         OnShow();
     }
@@ -311,6 +349,7 @@ where T : SingletonBase
         if (completeUiInite)
             return;
         completeUiInite = true;
+
 
         OnInit();
     }
@@ -334,15 +373,17 @@ where T : SingletonBase
         {
             if (m_gameObject == null)
                 m_gameObject = gameObject;
-            return m_gameObject;
+            return m_gameObject; //아래와 같은 의미
+            //return m_gameObject??(m_gameObject = gameObject); //아래와 같은 의미
+            //return m_gameObject ??= gameObject;
         }
     }
 
     /// <summary>
-    /// 명확히 끄는 함수, gameObject.SetActive(false)는 UI를 끄는건지 잠시 비활성화하는 건지 알 수 없다. 그래서 명확하게 하기 위해서 CloseFn을 호출해서 끌때 처리해야하는 로직을 실행하자(켤때도 마찬가지 Show강제 사용)
+    /// 명확히 끄는 함수, gameObject.SetActive(false)는 UI를 끄는건지 잠시 비활성화하는 건지 알 수 없다. 그래서 명확하게 하기 위해서 Close함수를 호출해서 끌때 처리해야하는 로직을 실행하자(켤때도 마찬가지 Show강제 사용)
     /// ESC눌렀을때도 호출된다.
     /// </summary>
-    virtual public void CloseFn()
+    virtual public void Close()
     {
         if (CacheGameObject)
             CacheGameObject.SetActive(false);
@@ -350,7 +391,7 @@ where T : SingletonBase
 
     protected void CloseCallback()
     {
-        CloseFn();
+        Close();
     }
 
 

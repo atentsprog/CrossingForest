@@ -44,13 +44,21 @@ internal class Util
         return (T)newComponent.GetComponent(typeof(T));
     }
 
-
-    static SingletonBase GetAllObjectsOnlyInScene<T>()
+    static SingletonBase GetAllObjectsOnlyInScene<T>() where T : Component
     {
         foreach (UnityEngine.Object go in Resources.FindObjectsOfTypeAll(typeof(T)))
         {
             if (!(go.hideFlags == HideFlags.NotEditable || go.hideFlags == HideFlags.HideAndDontSave || go.hideFlags == HideFlags.HideInHierarchy))
             {
+                T t = (T)go;
+                
+                //Debug.LogWarning($"{typeof(T)} :: ({go}: {go.GetType()} {t.gameObject}");
+
+
+                //에디터상에서 삭제한 오브젝트도 있는것으로 되어서 사용안함. 부모 없는 경우도 null 반환 시킴
+                if (t.transform.parent == null)
+                    return null;
+
                 return (SingletonBase)go;
             }
         }

@@ -47,11 +47,11 @@ public class UIStackManager : SingletonMonoBehavior<UIStackManager>
 
     public class UICloseInfo
     {
-        public UICloseInfo(Transform _tr, Action ac)
+        public UICloseInfo(Transform tr, Action closeFn)
         {
-            this.tr = _tr;
-            this.instanceID = _tr.gameObject.GetInstanceID();
-            this.closeFn = ac;
+            this.tr = tr;
+            this.instanceID = tr.gameObject.GetInstanceID();
+            this.closeFn = closeFn;
         }
 
         public int instanceID;

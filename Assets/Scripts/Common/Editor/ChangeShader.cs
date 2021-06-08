@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class ChangeShader : ScriptableWizard
 {
-    [MenuItem("Assets/Change Shader", false, 1)]
+    [MenuItem("Assets/Change Shader")]
     static void Init()
     {
         ChangeShader changeShader = DisplayWizard<ChangeShader>(
@@ -172,8 +172,8 @@ All File In Directory : 디렉토리에 있는 모든 메테리얼을 대상으�
                 case ShaderUtil.ShaderPropertyType.Range:
                     toMat.GetFloatArray(item.name, item.floatArray);
                     break;
-                //case ShaderUtil.ShaderPropertyType.TexEnv: // 텍스쳐는 복사할 필요 없으므로 제외
-                //    item.textureValue = toMat.GetTexture(item.name);
+                    //case ShaderUtil.ShaderPropertyType.TexEnv: // 텍스쳐는 복사할 필요 없으므로 제외
+                    //    item.textureValue = toMat.GetTexture(item.name);
                     //break;
             }
         }
@@ -220,8 +220,6 @@ All File In Directory : 디렉토리에 있는 모든 메테리얼을 대상으�
         List<Material> desMaterials = new List<Material>();
         foreach (var item in Selection.objects)
         {
-            if (item == null)
-                continue;
             var itemType = item.GetType();
             if (itemType == typeof(Material))
                 desMaterials.Add((Material)item);
@@ -241,11 +239,8 @@ All File In Directory : 디렉토리에 있는 모든 메테리얼을 대상으�
             if (EditorUtility.DisplayDialog("경고", "쉐이더를 지정하지 않았습니다. 계속 진행하겠습니까?", "확인", "취소") == false)
                 return;
         }
-
-        // Linq를 사용해서 중복 제거.
         var materials = desMaterials.Distinct() // 중복제거
             .Where(x => x.shader != toShader);  // 대상 필터링
-
 
         foreach (var mat in materials)
         {
