@@ -1,77 +1,68 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Transform listParent;
-    public InventoryItem posItem;
-    public int maxWidthCount = 10;
-    public int inventoryCount = 30;
-    public float lineHeight = 100f;
+    public InventoryItem blankIcon;
+    //비어있는 슬롯 위치 아이콘을 10개씩 4줄로 배치하자.
+    // Start is called before the first frame update
+    public float xSize = 10;
+    public float ySize = 10;
+    public int rowCount = 10; // 가로 갯수
+    public int lineCount = 4;
 
     public List<InventoryItem> posItems = new List<InventoryItem>();
-    public float startPosY = -60;
 
+    private void Awake()
+    {
+        posItems.Clear();
+    }
+    [ContextMenu("아이콘 생성")]
     void Start()
     {
-        InitInventoryPos();
-
-        //내가 가진 아이템을 배치 해보자.
-        for (int i = 0; i < UserDataManager.instance.myItems.Count; i++)
-        {
-            var myItem = UserDataManager.instance.myItems[i];
-            posItems[i].SetItem(myItem);
-        }
-    }
-
-    [ContextMenu("배치")]
-    void InitInventoryPos()
-    {
+        // 기존의 아이템을 삭제하자.
         posItems.ForEach(x => Destroy(x.gameObject));
 
-        posItem.gameObject.SetActive(true);
-        for (int index = 0; index < inventoryCount; index++) // 세로 인덱스. 
+        blankIcon.gameObject.SetActive(true);
+        for (int lineIndex = 0; lineIndex < lineCount; lineIndex++)
         {
-            int rowIndex = index % maxWidthCount;
-            int lineIndex = (int)((float)index / maxWidthCount);
-            float addHeight = lineIndex * lineHeight + startPosY;
-            InventoryItem item = (Instantiate(posItem, transform));
-            Animator animator = item.GetComponent<Animator>();
-            posItems.Add(item);
-            float pos = (float)rowIndex / (maxWidthCount - 1);
-            item.SetPos(pos, addHeight, listParent);
+            for (int x = 0; x < rowCount; x++)
+            {
+                GameObject newGo = Instantiate(blankIcon.gameObject);
+                newGo.transform.SetParent(transform); //RectTransform 에 있는 GO를 부모 지정할때는 항상 SetParent사용해야 한다.
+                InventoryItem inventoryItem = newGo.GetComponent<InventoryItem>();
+                float animationPos = (float)x / (rowCount - 1);
+                inventoryItem.SetPos(animationPos, lineIndex);
+
+                posItems.Add(inventoryItem);
+            }
         }
-        posItem.gameObject.SetActive(false);
+        blankIcon.gameObject.SetActive(false);
+
+        //// 포지션 아이콘 생성.
+        //int xCount = 10;
+        //int yCount = 4;
+        //Vector3 originalPos = blankIcon.localPosition;
+        //for (int y = 0; y < yCount; y++)
+        //{
+        //    for (int x = 0; x < xCount; x++)
+        //    {
+        //        var newPos = originalPos;
+        //        newPos.x += x * xSize;
+        //        newPos.y += y * ySize;
+        //        GameObject newGo = Instantiate(blankIcon.gameObject);
+        //        //newGo.transform.parent = transform;
+        //        newGo.transform.SetParent(transform); //RectTransform 에 있는 GO를 부모 지정할때는 항상 SetParent사용해야 한다.
+        //        newGo.transform.localPosition = newPos;
+        //        posItems.Add(newGo);
+        //    }
+        //}
     }
 
-    // 손가락 표시.
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) MoveHand(0, -1);
-        if (Input.GetKeyDown(KeyCode.DownArrow)) MoveHand(0, 1);
-        if (Input.GetKeyDown(KeyCode.RightArrow)) MoveHand(1, 0);
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) MoveHand(-1, 0);
+        
     }
-
-    public Transform handIcon;
-    int handPosIndex;
-    private void MoveHand(int moveX, int moveY)
-    {
-        handPosIndex += moveX;
-
-        // 갈 수 있는 포지션인지 확인.
-        handPosIndex += (moveY * maxWidthCount);
-
-        handPosIndex = Math.Min(handPosIndex, inventoryCount - 1); // 최대값.
-        handPosIndex = Math.Max(handPosIndex, 0);                   // 최소값
-
-        //손 가락 위치 시키자. -> handPosIndex에 해당하는 위치
-        handIcon.position = posItems[handPosIndex].transform.position;
-        previousHover.SetHover(false);
-        posItems[handPosIndex].SetHover(true);
-        previousHover = posItems[handPosIndex];
-    }
-    InventoryItem previousHover;
 }

@@ -2,55 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
-    public Animator animator;
-    public Image itemIcon;
-    public Image itemHover;
-    public Sprite blankSprite;
-    public Sprite blankSpriteHover;
-
-    internal void SetPos(float pos, float addHeight, Transform listParent)
+    public float offsetStartY = 430.5f;
+    public float height = -92;
+    internal void SetPos(float pos, int lineIndex)
     {
-        SetImage(blankSprite);
-        animator.enabled = true;
+        StartCoroutine(SetPosCo(pos, lineIndex));
+    }
+    private IEnumerator SetPosCo(float pos, int lineIndex)
+    {
+        Animator animator = GetComponent<Animator>();
         animator.Play("InventoryPos", 0, pos);
         animator.speed = 0;
-        StartCoroutine(SetHeightCo(addHeight, listParent));
-    }
 
-    private IEnumerator SetHeightCo(float addHeight, Transform listParent)
-    {
-        yield return null; // 애니메이션 진행될 수 있도록 1frame쉬기
+        yield return null;
+
         animator.enabled = false;
-        transform.Translate(0, addHeight, 0, Space.Self);
-        transform.SetParent(listParent);
-    }
-
-    internal void SetItem(Sprite sprite)
-    {
-        SetImage(sprite);
-    }
-
-    private void SetImage(Sprite sprite)
-    {
-        itemIcon.sprite = sprite;
-        itemIcon.SetNativeSize();
-    }
-
-    internal void SetHover(bool state)
-    {
-        if (state)
-        {
-            //아이콘이 커진다.
-            // 배경에 호버 이미지가 보인다.
-        }
-        else
-        {
-            // 우너래 아이콘 크기로 수정.
-            // 배경 호버 이미지 안보이게 한다.
-        }
+        //y위치값 수정하자.
+        transform.Translate(0, offsetStartY + lineIndex * height, 0, Space.Self);
     }
 }
