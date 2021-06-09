@@ -2,11 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
     public float offsetStartY = 430.5f;
     public float height = -92;
+    public Image itemIcon;
     internal void SetPos(float pos, int lineIndex)
     {
         StartCoroutine(SetPosCo(pos, lineIndex));
@@ -22,5 +24,11 @@ public class InventoryItem : MonoBehaviour
         animator.enabled = false;
         //y위치값 수정하자.
         transform.Translate(0, offsetStartY + lineIndex * height, 0, Space.Self);
+    }
+
+    internal void SetItem(Sprite sprite)
+    {
+        itemIcon.sprite = sprite;
+        itemIcon.SetNativeSize();
     }
 }

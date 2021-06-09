@@ -40,29 +40,12 @@ public class InventoryUI : MonoBehaviour
         }
         blankIcon.gameObject.SetActive(false);
 
-        //// 포지션 아이콘 생성.
-        //int xCount = 10;
-        //int yCount = 4;
-        //Vector3 originalPos = blankIcon.localPosition;
-        //for (int y = 0; y < yCount; y++)
-        //{
-        //    for (int x = 0; x < xCount; x++)
-        //    {
-        //        var newPos = originalPos;
-        //        newPos.x += x * xSize;
-        //        newPos.y += y * ySize;
-        //        GameObject newGo = Instantiate(blankIcon.gameObject);
-        //        //newGo.transform.parent = transform;
-        //        newGo.transform.SetParent(transform); //RectTransform 에 있는 GO를 부모 지정할때는 항상 SetParent사용해야 한다.
-        //        newGo.transform.localPosition = newPos;
-        //        posItems.Add(newGo);
-        //    }
-        //}
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //내가 가진 아이템을 배치 해보자.
+        for (int i = 0; i < UserDataManager.instance.myItems.Count; i++)
+        {
+            var myItem = UserDataManager.instance.myItems[i];
+            posItems[i].SetItem(myItem);
+        }
     }
 }
