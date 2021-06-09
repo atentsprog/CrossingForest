@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,5 +44,30 @@ public class InventoryUI : MonoBehaviour
             item.SetPos(pos, addHeight, listParent);
         }
         posItem.gameObject.SetActive(false);
+    }
+
+    // 손가락 표시.
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow)) MoveHand(0, -1);
+        if (Input.GetKeyDown(KeyCode.DownArrow)) MoveHand(0, 1);
+        if (Input.GetKeyDown(KeyCode.RightArrow)) MoveHand(1, 0);
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) MoveHand(-1, 0);
+    }
+
+    public Transform handIcon;
+    int handPosIndex;
+    private void MoveHand(int moveX, int moveY)
+    {
+        handPosIndex += moveX;
+
+        // 갈 수 있는 포지션인지 확인.
+        handPosIndex += (moveY * maxWidthCount);
+
+        handPosIndex = Math.Min(handPosIndex, inventoryCount - 1); // 최대값.
+        handPosIndex = Math.Max(handPosIndex, 0);                   // 최소값
+
+        //손 가락 위치 시키자. -> handPosIndex에 해당하는 위치
+        handIcon.position = posItems[handPosIndex].transform.position;
     }
 }
