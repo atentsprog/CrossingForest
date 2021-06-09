@@ -69,5 +69,9 @@ public class InventoryUI : MonoBehaviour
 
         //손 가락 위치 시키자. -> handPosIndex에 해당하는 위치
         handIcon.position = posItems[handPosIndex].transform.position;
+        previousHover.SetHover(false);
+        posItems[handPosIndex].SetHover(true);
+        previousHover = posItems[handPosIndex];
     }
+    InventoryItem previousHover;
 }

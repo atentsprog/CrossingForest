@@ -7,9 +7,10 @@ using UnityEngine.UI;
 public class InventoryItem : MonoBehaviour
 {
     public Animator animator;
-    public Image image;
+    public Image itemIcon;
+    public Image itemHover;
     public Sprite blankSprite;
-    public Sprite blankSpriteSelected;
+    public Sprite blankSpriteHover;
 
     internal void SetPos(float pos, float addHeight, Transform listParent)
     {
@@ -35,7 +36,21 @@ public class InventoryItem : MonoBehaviour
 
     private void SetImage(Sprite sprite)
     {
-        image.sprite = sprite;
-        image.SetNativeSize();
+        itemIcon.sprite = sprite;
+        itemIcon.SetNativeSize();
+    }
+
+    internal void SetHover(bool state)
+    {
+        if (state)
+        {
+            //아이콘이 커진다.
+            // 배경에 호버 이미지가 보인다.
+        }
+        else
+        {
+            // 우너래 아이콘 크기로 수정.
+            // 배경 호버 이미지 안보이게 한다.
+        }
     }
 }
