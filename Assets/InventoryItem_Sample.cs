@@ -44,12 +44,12 @@ public class InventoryItem_Sample : MonoBehaviour
     {
         if (state)
         {
-            //아이콘이 커진다.
+            // 아이콘이 커진다.
             // 배경에 호버 이미지가 보인다.
         }
         else
         {
-            // 우너래 아이콘 크기로 수정.
+            // 원래 아이콘 크기로 수정.
             // 배경 호버 이미지 안보이게 한다.
         }
     }

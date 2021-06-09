@@ -9,6 +9,10 @@ public class InventoryItem : MonoBehaviour
     public float offsetStartY = 430.5f;
     public float height = -92;
     public Image itemIcon;
+    private void Awake()
+    {
+        itemIcon = GetComponent<Image>();
+    }
     internal void SetPos(float pos, int lineIndex)
     {
         StartCoroutine(SetPosCo(pos, lineIndex));
