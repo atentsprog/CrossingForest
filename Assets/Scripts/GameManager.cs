@@ -8,8 +8,9 @@ internal interface IClick
 }
 public class GameManager : MonoBehaviour
 {
-    public LayerMask layer;
-
+    public LayerMask groundLayer;
+    public InventoryUI inventoryUI;
+    public DialogUI dialogUI;
     public Vector3 mousePosition;
     public Vector3 hitPoint;
     public bool isHit;
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
             mousePosition = Input.mousePosition;
             ray = Camera.main.ScreenPointToRay(mousePosition);
 
-            if (Physics.Raycast(ray, out hitData, 1000, layer))
+            if (Physics.Raycast(ray, out hitData, 1000, groundLayer))
             {
                 isHit = true;
                 hitPoint = hitData.point;
@@ -44,12 +45,22 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            DialogUI.instance.Show(dialogString);
+            dialogUI.Show(dialogString);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            DialogUI.instance.Close();
+            dialogUI.Close();
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            inventoryUI.gameObject.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            inventoryUI.gameObject.SetActive(false);
+        }
+
     }
     public string dialogString = "<color=#00ff00>너구리</color>야 밥은 먹었니?";
     //public float rayLength = 1000f;

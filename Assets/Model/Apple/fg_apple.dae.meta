@@ -24,6 +24,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: m
     second: {fileID: 2100000, guid: 3229ab1cfa4cbaf429ecd61c7b145258, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_fg_apple
+    second: {fileID: 2100000, guid: bcd7cc3b6558cfd49bef86adcb621141, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_sdw_circle
+    second: {fileID: 2100000, guid: 9d431159c78ff3247b1ccb8e8dcbc35d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -35,8 +45,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: "Avatar creation failed:\n\tTransform 'base' for human bone
-      'Hips' not found\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 

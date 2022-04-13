@@ -26,14 +26,14 @@ public class DialogUI : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-
-    void Start()
-    {
         canvasGroup = GetComponent<CanvasGroup>();
         semo = transform.Find("BG/Semo").GetComponent<Image>();
         gameObject.SetActive(false);
     }
+
+    //void Start()
+    //{
+    //}
     public float duration = 1;
 
     //void Update()
@@ -65,8 +65,8 @@ public class DialogUI : MonoBehaviour
     TweenerCore<string, string, StringOptions> typingHandle;
     internal void Show(string talkSring)
     {
-        semo.gameObject.SetActive(false);
         gameObject.SetActive(true);
+        semo.gameObject.SetActive(false);
         //text.text = talkSring;
         text.text = "";
 
